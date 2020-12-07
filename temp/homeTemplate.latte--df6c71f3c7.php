@@ -29,7 +29,7 @@ class Templatedf6c71f3c7 extends Latte\Runtime\Template
         <form>
             <div class="form-group">
                 <label for="region">Select region</label>
-                <select id="region" class="form-control" onchange="loadDistrict()">
+                <select id="region" class="form-control" >
                     <option value="null">Select ...</option>
 <?php
 		$iterations = 0;
@@ -44,7 +44,7 @@ class Templatedf6c71f3c7 extends Latte\Runtime\Template
             </div>
             <div class="form-group">
                 <label for="district">Select district</label>
-                <select id="district" class="form-control" onchange="displayInfoDistrict()">
+                <select id="district" class="form-control" >
                     <option value="null">Select ...</option>
                 </select>
             </div>
@@ -58,31 +58,8 @@ class Templatedf6c71f3c7 extends Latte\Runtime\Template
     </div>
     
     <script type="text/javascript">
-        function loadDistrict() {
-            var idRegion = document.getElementById("region").value;
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var dataArray = JSON.parse(this.responseText);
-                    var x = document.getElementById("district");
-                    x.innerHTML="";
 
-                    dataArray.forEach(function(item) {
-                        var option = document.createElement("option");
-                        option.text = item["nazev"];
-                        option.value = item["kod"]
-                        x.add(option);  
-                    });
-                }
-            };
-            xmlhttp.open("GET", "src/getDistrict.php?idk=" + idRegion, true);
-            xmlhttp.send();
-        }
-
-        function displayInfoDistrict(){
-            var district = document.getElementById("district").value;
-            document.getElementById("infoDistrict").src = "https://www.statnisprava.cz/rstsp/ciselniky.nsf/i/"+district;
-        }
+            //todo
         
     </script>
 
